@@ -1,3 +1,5 @@
+package models;
+
 /**
  * Classe base che rappresenta una generica risorsa della biblioteca digitale.
  * Applica il principio di INCAPSULAMENTO: tutti gli attributi sono privati
@@ -7,7 +9,7 @@ public class Risorsa {
 
     // Attributi privati: non accessibili direttamente dall'esterno
     private String titolo;
-    private int    annoPubblicazione;
+    private int annoPubblicazione;
     private String codice; // Identificativo univoco della risorsa
 
     // -------------------------------------------------------------------------
@@ -15,9 +17,9 @@ public class Risorsa {
     // -------------------------------------------------------------------------
 
     public Risorsa(String titolo, int annoPubblicazione, String codice) {
-        this.titolo            = titolo;
+        this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
-        this.codice            = codice;
+        this.codice = codice;
     }
 
     // -------------------------------------------------------------------------

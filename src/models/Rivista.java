@@ -1,3 +1,5 @@
+package models;
+
 /**
  * Sottoclasse di Risorsa che rappresenta una Rivista periodica.
  * Applica il principio di EREDITARIETÀ: estende Risorsa aggiungendo
@@ -12,7 +14,6 @@ public class Rivista extends Risorsa {
     // -------------------------------------------------------------------------
     // Costruttore
     // -------------------------------------------------------------------------
-
 
     public Rivista(String titolo, int annoPubblicazione, String codice, int numero) {
         super(titolo, annoPubblicazione, codice);

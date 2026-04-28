@@ -1,3 +1,5 @@
+package models;
+
 /**
  * Sottoclasse di Risorsa che rappresenta un Libro fisico o digitale.
  * Applica il principio di EREDITARIETÀ: estende Risorsa ereditandone

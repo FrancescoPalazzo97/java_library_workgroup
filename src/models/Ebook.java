@@ -1,3 +1,5 @@
+package models;
+
 /**
  * Sottoclasse di Risorsa che rappresenta un Ebook (libro digitale).
  * Applica il principio di EREDITARIETÀ: estende Risorsa aggiungendo
@@ -12,7 +14,6 @@ public class Ebook extends Risorsa {
     // -------------------------------------------------------------------------
     // Costruttore
     // -------------------------------------------------------------------------
-
 
     public Ebook(String titolo, int annoPubblicazione, String codice, String formato) {
         super(titolo, annoPubblicazione, codice);
