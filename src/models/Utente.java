@@ -10,6 +10,7 @@ public class Utente {
     public Utente(String nome, String idUtente) {
         this.nome = nome;
         this.idUtente = idUtente;
+        this.risorseInPrestito = new ArrayList<>();
     }
 
     public String getNome() {
