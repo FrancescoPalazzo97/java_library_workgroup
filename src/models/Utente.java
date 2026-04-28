@@ -44,10 +44,21 @@ public class Utente {
     public void restituisci(Risorsa risorsa) {
         boolean risultato = risorseInPrestito.remove(risorsa);
         if (!risultato) {
-            System.out.println("Errore: durante l'eleminazione della risorsa");
+            System.out.println("Errore: durante l'eliminazione della risorsa");
             return;
         }
-        System.out.println("Risorsa " + risorsa.getTitolo() + " eliminata");
+        System.out.println("Risorsa \"" + risorsa.getTitolo() + "\" restituita con successo.");
+    }
+
+    public void stampaRisorse() {
+        System.out.println("=== Risorse in prestito di " + nome + " (ID: " + idUtente + ") ===");
+        if (risorseInPrestito.isEmpty()) {
+            System.out.println("Nessuna risorsa in prestito.");
+            return;
+        }
+        for (Risorsa risorsa : risorseInPrestito) {
+            risorsa.visualizzaDettagli();
+        }
     }
 
 }
