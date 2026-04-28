@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         Biblioteca biblioteca = new Biblioteca("Biblioteca Centrale");
+        seedDatiIniziali(biblioteca);
 
         int scelta;
 
@@ -18,9 +19,12 @@ public class Main {
             System.out.println("3. Registra Utente");
             System.out.println("4. Mostra Inventario");
             System.out.println("5. Cerca per Titolo");
-            System.out.println("6. Esci");
+            System.out.println("6. Presta Risorsa");
+            System.out.println("7. Restituisci Risorsa");
+            System.out.println("8. Risorse in Prestito Utente");
+            System.out.println("9. Esci");
 
-            scelta = leggiIntero("Scelta: ", 1, 6);
+            scelta = leggiIntero("Scelta: ", 1, 9);
 
             switch (scelta) {
 
@@ -84,13 +88,45 @@ public class Main {
                     break;
 
                 case 6:
+                    String idPrestito = leggiStringaNonVuota("ID utente: ");
+                    String codPrestito = leggiStringaNonVuota("Codice risorsa da prestare: ");
+                    biblioteca.prestaRisorsa(idPrestito, codPrestito);
+                    break;
+
+                case 7:
+                    String idResa = leggiStringaNonVuota("ID utente: ");
+                    String codResa = leggiStringaNonVuota("Codice risorsa da restituire: ");
+                    biblioteca.restituisciRisorsa(idResa, codResa);
+                    break;
+
+                case 8:
+                    String idStampa = leggiStringaNonVuota("ID utente: ");
+                    Utente utente = biblioteca.cercaUtente(idStampa);
+                    if (utente == null) {
+                        System.out.println("Utente con ID \"" + idStampa + "\" non trovato.");
+                    } else {
+                        utente.stampaRisorse();
+                    }
+                    break;
+
+                case 9:
                     System.out.println("Uscita...");
                     break;
             }
 
-        } while (scelta != 6);
+        } while (scelta != 9);
 
         scanner.close();
+    }
+
+    private static void seedDatiIniziali(Biblioteca biblioteca) {
+        System.out.println("=== Caricamento dati iniziali ===");
+        biblioteca.aggiungiRisorsa(new Libro("Il nome della rosa", 1980, "L001", "Umberto Eco"));
+        biblioteca.aggiungiRisorsa(new Libro("1984", 1949, "L002", "George Orwell"));
+        biblioteca.aggiungiRisorsa(new Ebook("Effective Java", 2018, "E001", "PDF"));
+        biblioteca.aggiungiRisorsa(new Rivista("National Geographic", 2024, "R001", 256));
+        biblioteca.aggiungiUtente(new Utente("Mario Rossi", "U001"));
+        biblioteca.aggiungiUtente(new Utente("Luigi Bianchi", "U002"));
     }
 
     // =========================

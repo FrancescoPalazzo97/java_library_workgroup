@@ -87,4 +87,59 @@ public class Biblioteca {
             System.out.println("Nessuna risorsa trovata con titolo \"" + titolo + "\".");
         }
     }
+
+    public Risorsa cercaRisorsaPerCodice(String codice) {
+        for (Risorsa risorsa : listaRisorseDisponibili) {
+            if (risorsa.getCodice().equalsIgnoreCase(codice)) {
+                return risorsa;
+            }
+        }
+        return null;
+    }
+
+    public Utente cercaUtente(String idUtente) {
+        for (Utente utente : listaUtenti) {
+            if (utente.getIdUtente().equalsIgnoreCase(idUtente)) {
+                return utente;
+            }
+        }
+        return null;
+    }
+
+    public void prestaRisorsa(String idUtente, String codiceRisorsa) {
+        Utente utente = cercaUtente(idUtente);
+        if (utente == null) {
+            System.out.println("Utente con ID \"" + idUtente + "\" non trovato.");
+            return;
+        }
+        Risorsa risorsa = cercaRisorsaPerCodice(codiceRisorsa);
+        if (risorsa == null) {
+            System.out.println("Risorsa con codice \"" + codiceRisorsa + "\" non disponibile.");
+            return;
+        }
+        listaRisorseDisponibili.remove(risorsa);
+        utente.prendiInPrestito(risorsa);
+        System.out.println("Risorsa \"" + risorsa.getTitolo() + "\" prestata a " + utente.getNome() + ".");
+    }
+
+    public void restituisciRisorsa(String idUtente, String codiceRisorsa) {
+        Utente utente = cercaUtente(idUtente);
+        if (utente == null) {
+            System.out.println("Utente con ID \"" + idUtente + "\" non trovato.");
+            return;
+        }
+        Risorsa risorsa = null;
+        for (Risorsa r : utente.getRisorseInPrestito()) {
+            if (r.getCodice().equalsIgnoreCase(codiceRisorsa)) {
+                risorsa = r;
+                break;
+            }
+        }
+        if (risorsa == null) {
+            System.out.println(utente.getNome() + " non ha in prestito una risorsa con codice \"" + codiceRisorsa + "\".");
+            return;
+        }
+        utente.restituisci(risorsa);
+        listaRisorseDisponibili.add(risorsa);
+    }
 }
