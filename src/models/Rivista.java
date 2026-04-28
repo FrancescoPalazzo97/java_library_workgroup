@@ -1,4 +1,3 @@
-package models;
 
 /**
  * Sottoclasse di Risorsa che rappresenta una Rivista periodica.

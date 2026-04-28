@@ -1,4 +1,3 @@
-package models;
 
 /**
  * Classe base che rappresenta una generica risorsa della biblioteca digitale.
