@@ -31,7 +31,7 @@ public class Biblioteca {
         this.nome = _nome;
     }
 
-    public boolean aggiungiRisorsa(Risorsa risorsa) {
+    public void aggiungiRisorsa(Risorsa risorsa) {
         for (Risorsa r : listaRisorseDisponibili) {
             if (r.getCodice().equalsIgnoreCase(risorsa.getCodice())) {
                 System.out.println("Risorsa -> " + risorsa.getTitolo() + " già presente nella biblioteca - codice: ["
@@ -42,6 +42,19 @@ public class Biblioteca {
 
             }
         }
-        return true;
+    }
+
+    public void rimuoviRisorsa(Risorsa risorsa)
+    {
+        for (Risorsa r : listaRisorseDisponibili) {
+            if (r.getCodice().equalsIgnoreCase(risorsa.getCodice())) {
+                System.out.println("Risorsa -> " + risorsa.getTitolo() + " rimossa dalla biblioteca - codice: ["
+                        + risorsa.getCodice() + "].");
+            } else {
+                System.out.println("Risorsa -> " + risorsa.getTitolo() + " non presente nella biblioteca - codice: ["
+                        + risorsa.getCodice() + "]");
+            }
+        }
+
     }
 }
