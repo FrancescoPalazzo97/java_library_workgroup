@@ -28,4 +28,25 @@ public class Utente {
         this.idUtente = idUtente;
     }
 
+    public ArrayList<Risorsa> getRisorseInPrestito() {
+        return this.risorseInPrestito;
+    }
+
+    public void setRisorseInPrestito(ArrayList<Risorsa> risorseInPrestito) {
+        this.risorseInPrestito = risorseInPrestito;
+    }
+
+    public void prendiInPrestito(Risorsa nuovaRisorsa) {
+        risorseInPrestito.add(nuovaRisorsa);
+    }
+
+    public void restituisci(Risorsa risorsa) {
+        boolean risultato = risorseInPrestito.remove(risorsa);
+        if (!risultato) {
+            System.out.println("Errore: durante l'eleminazione della risorsa");
+            return;
+        }
+        System.out.println("Risorsa " + risorsa.getTitolo() + " eliminata");
+    }
+
 }
